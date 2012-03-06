@@ -20,6 +20,29 @@ describe Quacks do
     subject.quotes_for_author(name).length.should == 1
   end
 
+  it "should retrieve a previously saved quote" do
+    subject.save_quote(name, quote)
+    subject.quotes_for_author(name).first.should == quote
+  end
+
+  it "should retrieve all previously saved quotes" do
+    quote2 = "quote2"
+    subject.save_quote(name, quote)
+    subject.save_quote(name, quote2)
+    quotes = subject.quotes_for_author(name)
+    quotes.first.should == quote
+    quotes[1].should == quote2
+  end
+
+  it "should handle different quotes for different authors" do
+    name2 = "author2"
+    quote2 = "quote2"
+    subject.save_quote(name, quote)
+    subject.save_quote(name2, quote2)
+    subject.quotes_for_author(name).first.should == quote
+    subject.quotes_for_author(name2).first.should == quote2
+  end
+
   it "should get all quotes for an author" do
     quote1 = "quote1"
     quote2 = "quote2"
