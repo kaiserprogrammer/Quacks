@@ -1,0 +1,28 @@
+# Quacks
+
+is a system only for programming quotes
+
+## Usage
+
+Use case: User asks for quotes by a specific author
+===================================================
+
+Data: <Author>
+1. User asks for data
+2. System delivers all quotes for the author it knows about
+
+
+Use case: Add quote to database
+===============================
+
+Data: <Author> <Quote>
+1. User provides data
+2. System stores data
+
+
+Use case: Getting Images for an author
+======================================
+
+1. User asks for Pictures of an author
+2. System searches the web for relevant authors
+3. System delivers 5 pictures
