@@ -15,9 +15,6 @@ module Quacks
     @images = {}
   end
 
-  def self.images=(value)
-  end
-
   def self.quotes_for_author name
     @quotes.fetch(name) { [] }
   end
