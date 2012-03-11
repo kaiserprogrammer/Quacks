@@ -24,11 +24,9 @@ module Quacks
   end
 
   def self.all_quotes
-    acc_quotes = []
-    @quotes.each do |name, quotes|
-      acc_quotes.concat quotes
+    @quotes.inject [] do |acc ,(name, quotes)|
+      acc.concat quotes
     end
-    acc_quotes
   end
 
   def self.save_image name, image_path
