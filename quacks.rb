@@ -8,7 +8,7 @@ module Quacks
   end
 
   def self.reset_quotes
-    @quotes = Hash.new []
+    @quotes = Hash.new { |h, k| h[k] = [] }
   end
 
   def self.reset_images
@@ -20,7 +20,7 @@ module Quacks
   end
 
   def self.save_quote name, quote
-    @quotes[name] = (@quotes[name] + [quote]).uniq
+    (@quotes[name] << quote).uniq!
   end
 
   def self.all_quotes
