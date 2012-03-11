@@ -24,7 +24,7 @@ module Quacks
   end
 
   def self.all_quotes
-    @quotes.inject [] do |acc ,(name, quotes)|
+    @quotes.inject [] do |acc, (name, quotes)|
       acc.concat quotes
     end
   end
