@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require_relative "quacks"
 
-describe Quacks, :subject do
+describe Quacks do
   attr_reader :name, :quote
   before(:each) do
     Quacks.reset
