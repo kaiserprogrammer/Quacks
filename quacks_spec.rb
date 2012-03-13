@@ -87,6 +87,7 @@ describe Quacks do
     subject.save_quote(name2, quote2)
     subject.save_quote(name3, quote3)
     subject.all_quotes.length.must_equal 3
+    subject.all_quotes.first.must_match /^q[123]/
   end
 
   it "should store an image file path for an author" do
