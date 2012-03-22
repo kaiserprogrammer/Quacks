@@ -82,7 +82,7 @@ Data: <user_id> <quote>
 3. System attributes dislike to user
 
 
-Use Case: Register User
+Use Case: Add User
 =======================
 
 Data: <email>
