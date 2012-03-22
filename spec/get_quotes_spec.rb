@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require_relative "../get_quotes"
+require_relative "../add_user"
 require_relative "../add_author"
 require_relative "../add_quote"
 require_relative "memory_db"
@@ -15,21 +16,25 @@ describe GetQuotes do
     t = GetQuotes.new(0, @db)
     t.execute
 
-    t.quotes.must_equal []
+    t.quotes.length.must_equal 0
   end
 
   it "should get one quote for an author" do
     t = AddAuthor.new("John", @db)
     t.execute
-    id = t.author_id
+    author_id = t.author_id
+
+    au = AddUser.new("Bill", "bill@example.com", @db)
+    au.execute
+    user_id = au.user_id
 
     text = "lorem ipsum"
-    aq = AddQuote.new(id, text, @db)
+    aq = AddQuote.new(user_id, author_id, text, @db)
     aq.execute
 
-    gq = GetQuotes.new(id, @db)
+    gq = GetQuotes.new(author_id, @db)
     gq.execute
     gq.quotes.length.must_equal 1
-    gq.quotes.first.must_equal text
+    gq.quotes.first.quote.must_equal text
   end
 end
