@@ -85,7 +85,7 @@ Data: <user_id> <quote>
 Use Case: Add User
 =======================
 
-Data: <email>
+Data: <name> <email>
 1. User provides data
 2. System creates user
 3. System delivers user_id

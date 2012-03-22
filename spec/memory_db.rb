@@ -2,6 +2,7 @@ class InMemoryDB
   def initialize
     @authors_names = {}
     @authors = {}
+    @users = {}
     @id = 0
   end
 
@@ -21,5 +22,14 @@ class InMemoryDB
     @authors_names[name] = author
     @authors[id] = author
     author.id = @id
+  end
+
+  def get_user(id)
+    @users[id]
+  end
+
+  def add_user(user)
+    @users[id] = user
+    user.id = @id
   end
 end
