@@ -7,28 +7,35 @@ is a system only for programming quotes
 Use Case: Add Author
 ====================
 
-Data: <Name>
+Data: <name>
 1. User provides data
-2. System creates Author
+2. System creates author
+3. System delivers authors id
 
 Alternatives:
 
 Author already exists:
-  System delivers existing author
+  System delivers existing authors id
 
 
 Use Case: Get quotes for author
 ===================================================
 
-Data: <Author>
+Data: <author_id>
 1. User asks for quotes of author
-2. System delivers all quotes for the author it knows about
+2. System retrieves author
+3. System delivers all quotes for the author it knows about
+
+Alternatives:
+
+Author does not exist:
+  System delivers empty quotes
 
 
 Use Case: Add quote
 ===============================
 
-Data: <User> <Author> <Quote>
+Data: <userid> <author_id> <quote>
 1. User provides data
 2. System stores quote for author
 3. System attributes user with quote
@@ -37,7 +44,7 @@ Data: <User> <Author> <Quote>
 Use Case: Add image_path for author
 ==============================
 
-Data: <Author> <image_path>
+Data: <author_id> <image_path>
 1. User provides data
 2. System adds image for author
 
@@ -45,7 +52,7 @@ Data: <Author> <image_path>
 Use Case: Get image path of author
 ==================================
 
-Data: <Author>
+Data: <author_id>
 1. User provides data
 2. System delivers image_path of author
 
@@ -61,7 +68,7 @@ Use Case: Getting Images for an author from the web
 Use Case: User likes quote
 ==========================
 
-Data: <User> <Quote>
+Data: <user_id> <quote>
 1. provides data
 2. System adds a like to quote
 3. System attributes like to user
@@ -69,7 +76,21 @@ Data: <User> <Quote>
 Use Case: User dislikes quote
 =============================
 
-Data: <User> <Quote>
+Data: <user_id> <quote>
 1. provides data
 2. System adds a dislike to quote
 3. System attributes dislike to user
+
+
+Use Case: Register User
+=======================
+
+Data: <email>
+1. User provides data
+2. System creates user
+3. System delivers user_id
+
+Alternatives:
+
+User already exists:
+  System raises a condition
