@@ -7,12 +7,6 @@ module Quacks
     (db.quotes[name] << quote).uniq!
   end
 
-  def self.all_quotes db
-    db.quotes.inject [] do |acc, (name, quotes)|
-      acc.concat quotes
-    end
-  end
-
   def self.save_image name, image_path, db
     db.images[name] = image_path
   end

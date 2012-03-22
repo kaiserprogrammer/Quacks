@@ -74,7 +74,7 @@ describe Quacks do
 
   it "should store quotes" do
     subject.save_quote(name, quote, db)
-    subject.all_quotes(db).length.must_equal 1
+    @db.quotes.length.must_equal 1
   end
 
   it "should store an image file path for an author" do
