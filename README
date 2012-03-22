@@ -4,15 +4,15 @@ is a system only for programming quotes
 
 ## Usage
 
-Use case: User asks for quotes by a specific author
+Use Case: Get quotes for author
 ===================================================
 
 Data: <Author>
-1. User asks for data
+1. User asks for quotes of author
 2. System delivers all quotes for the author it knows about
 
 
-Use case: Add quote to database
+Use Case: Add quote
 ===============================
 
 Data: <Author> <Quote>
@@ -20,7 +20,30 @@ Data: <Author> <Quote>
 2. System stores data
 
 
-Use case: Getting Images for an author
+Use Case: Get all quotes
+========================
+
+1. User asks for all quotes
+2. System delivers all quotes
+
+
+Use Case: Add image for author
+==============================
+
+Data: <Author> <Image_path>
+1. User provides data
+2. System adds picture for author
+
+
+Use Case: Get image path of author
+==================================
+
+Data: <Author>
+1. User provides data
+2. System delivers image_path of author
+
+
+Use Case: Getting Images for an author
 ======================================
 
 1. User asks for Pictures of an author
