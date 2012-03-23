@@ -6,6 +6,7 @@ class AddQuote
     @author_id = author_id
     @quote = quote
     @db = db
+    db.transactions.info("#{self.class},;,#{user_id},;,#{author_id},;,#{quote}")
   end
 
   def execute

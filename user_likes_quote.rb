@@ -5,6 +5,7 @@ class UserLikesQuote
     @user_id = user_id
     @quote_id = quote_id
     @db = db
+    db.transactions.info("#{self.class},;,#{user_id},;,#{quote_id}")
   end
 
   def execute

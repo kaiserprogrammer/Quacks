@@ -6,6 +6,7 @@ class AddAuthor
   def initialize(name, db)
     @db = db
     @name = name
+    db.transactions.info("#{self.class},;,#{name}")
   end
 
   def execute
