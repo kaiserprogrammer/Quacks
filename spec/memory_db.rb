@@ -3,6 +3,7 @@ class InMemoryDB
     @authors_names = {}
     @authors = {}
     @users = {}
+    @quotes = {}
     @id = 0
   end
 
@@ -31,5 +32,14 @@ class InMemoryDB
   def add_user(user)
     @users[id] = user
     user.id = @id
+  end
+
+  def get_quote(id)
+    @quotes[id]
+  end
+
+  def add_quote(quote)
+    @quotes[id] = quote
+    quote.id = @id
   end
 end

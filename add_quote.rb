@@ -12,6 +12,7 @@ class AddQuote
     author = @db.get_author(@author_id)
     user = @db.get_user(@user_id)
     quote = Quote.new(@quote)
+    @db.add_quote(quote)
     author.quotes << quote
     user.quotes << quote
   end
