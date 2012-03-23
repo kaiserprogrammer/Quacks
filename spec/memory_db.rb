@@ -11,6 +11,10 @@ class InMemoryDB
     @id += 1
   end
 
+  def get_all_authors
+    @authors.values
+  end
+
   def get_author(id)
     @authors.fetch(id) { :author_does_not_exist }
   end

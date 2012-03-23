@@ -18,6 +18,13 @@ Author already exists:
   System delivers existing authors id
 
 
+Use Case: Get authors
+=====================
+
+1. User asks for all authors
+2. System delivers all ids of authors
+
+
 Use Case: Get quotes for author
 ===================================================
 
