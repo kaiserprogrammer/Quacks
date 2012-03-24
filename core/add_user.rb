@@ -12,8 +12,10 @@ class AddUser
 
   def execute
     user = @db.get_user_by_email(@email)
-    user = User.new(@name, @email) if user == :user_does_not_exist
-    @db.add_user(user)
+    if user == :user_does_not_exist
+      user = User.new(@name, @email)
+      @db.add_user(user)
+    end
     @user_id = user.id
   end
 end

@@ -35,4 +35,19 @@ describe AddUser do
     user2 = db.get_user(id2)
     user2.must_be_same_as user
   end
+
+  it "should not update user id" do
+    db = InMemoryDB.new
+    name = "bill"
+    email = "bill@example.com"
+    t = AddUser.new(name, email, db)
+    t.execute
+    id = t.user_id
+
+    t = AddUser.new(name, email, db)
+    t.execute
+    id2 = t.user_id
+
+    id2.must_equal id
+  end
 end
