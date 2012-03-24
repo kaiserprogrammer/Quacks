@@ -94,4 +94,14 @@ describe AuthorPresenter do
     view.quotes.first[:likes].must_equal 0
     view.quotes.first[:dislikes].must_equal 1
   end
+
+  it "should include user name and id" do
+    text = "Have a nice day"
+    aq = AddQuote.new(user_id, author_id, text, db)
+    aq.execute
+
+    presenter.update_view
+    view.quotes.first[:user_id].must_equal user_id
+    view.quotes.first[:user_name].must_equal db.get_user(user_id).name
+  end
 end

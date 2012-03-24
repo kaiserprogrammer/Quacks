@@ -30,6 +30,8 @@ class AuthorPresenter
       quote_model[:text] = quote.text
       quote_model[:likes] = quote.likes.count
       quote_model[:dislikes] = quote.dislikes.count
+      quote_model[:user_id] = quote.user.id
+      quote_model[:user_name] = quote.user.name
       quotes_model << quote_model
     end
     quotes_model
