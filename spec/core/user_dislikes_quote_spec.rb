@@ -29,9 +29,11 @@ describe UserDislikesQuote do
     lq = UserDislikesQuote.new(user_id, quote_id, db)
     lq.execute
 
+    lq = UserDislikesQuote.new(user_id, quote_id, db)
+    lq.execute
+
     user.dislikes.length.must_equal 1
     quote.dislikes.length.must_equal 1
-
     user.dislikes.first.quote.must_be_same_as quote
     quote.dislikes.first.user.must_be_same_as user
   end

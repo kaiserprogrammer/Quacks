@@ -32,6 +32,12 @@ describe UserLikesQuote do
     user.likes.length.must_equal 1
     quote.likes.length.must_equal 1
 
+    lq = UserLikesQuote.new(user_id, quote_id, db)
+    lq.execute
+
+    user.likes.length.must_equal 1
+    quote.likes.length.must_equal 1
+
     user.likes.first.quote.must_be_same_as quote
     quote.likes.first.user.must_be_same_as user
   end

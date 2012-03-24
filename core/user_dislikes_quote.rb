@@ -10,9 +10,14 @@ class UserDislikesQuote
 
   def execute
     user = @db.get_user(@user_id)
-    quote = @db.get_quote(@quote_id)
-    dislike = Dislike.new(user, quote)
-    user.dislikes << dislike
-    quote.dislikes << dislike
+    disliked_already = user.dislikes.any? do |dislike|
+      dislike.quote.id == @quote_id
+    end
+    unless disliked_already
+      quote = @db.get_quote(@quote_id)
+      dislike = Dislike.new(user, quote)
+      user.dislikes << dislike
+      quote.dislikes << dislike
+    end
   end
 end
