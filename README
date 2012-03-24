@@ -22,7 +22,7 @@ Use Case: Get authors
 =====================
 
 1. User asks for all authors
-2. System delivers all ids of authors
+2. System delivers all authors
 
 
 Use Case: Get quotes for author
@@ -54,14 +54,6 @@ Use Case: Add image_path for author
 Data: <author_id> <image_path>
 1. User provides data
 2. System adds image for author
-
-
-Use Case: Get image path of author
-==================================
-
-Data: <author_id>
-1. User provides data
-2. System delivers image_path of author
 
 
 Use Case: Getting Images for an author from the web
@@ -100,4 +92,10 @@ Data: <name> <email>
 Alternatives:
 
 User already exists:
-  System raises a condition
+  System delivers user_id
+
+Use Case: Get Users
+===================
+
+1. System is asked for all users
+2. System delivers all users
