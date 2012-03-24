@@ -12,8 +12,8 @@ class InMemoryDB
     @users_emails = {}
     @quotes = {}
     @id = 0
-    @transactions = Logger.new("transaction_db")
-    @transactions.outputters = FileOutputter.new("log_info", :filename => "transactions", :level => Logger::INFO)
+    @transactions = Log4r::Logger.new("transaction_db")
+    @transactions.outputters = Log4r::Logger::FileOutputter.new("log_info", :filename => "transactions", :level => Log4r::Logger::INFO)
   end
 
   def id
