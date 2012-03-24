@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require_relative "../../presenter/author_presenter"
-require_relative "../core/memory_db"
+require_relative "../../core/memory_db"
 require_relative "../../core/add_author"
 require_relative "../../core/add_user"
 require_relative "../../core/add_image"

@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require_relative "../../core/user_likes_quote"
-require_relative "memory_db"
+require_relative "../../core/memory_db"
 require_relative "../../core/add_author"
 require_relative "../../core/add_user"
 require_relative "../../core/add_quote"

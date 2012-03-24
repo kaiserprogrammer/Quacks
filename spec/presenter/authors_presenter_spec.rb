@@ -5,7 +5,7 @@ require_relative "../../core/add_user"
 require_relative "../../core/add_image"
 require_relative "../../core/user_likes_quote"
 require_relative "../../presenter/authors_presenter"
-require_relative "../core/memory_db"
+require_relative "../../core/memory_db"
 
 class MockAuthorsView
   attr_accessor :authors

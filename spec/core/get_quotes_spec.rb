@@ -3,7 +3,7 @@ require_relative "../../core/get_quotes"
 require_relative "../../core/add_user"
 require_relative "../../core/add_author"
 require_relative "../../core/add_quote"
-require_relative "memory_db"
+require_relative "../../core/memory_db"
 
 describe GetQuotes do
   attr_reader :db
