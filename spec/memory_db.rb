@@ -9,6 +9,7 @@ class InMemoryDB
     @authors_names = {}
     @authors = {}
     @users = {}
+    @users_emails = {}
     @quotes = {}
     @id = 0
     @transactions = Logger.new("transaction_db")
@@ -38,16 +39,21 @@ class InMemoryDB
   end
 
   def get_user(id)
-    @users[id]
+    @users.fetch(id) { :user_does_not_exist }
+  end
+
+  def get_user_by_email(email)
+    @users_emails.fetch(email) { :user_does_not_exist }
   end
 
   def add_user(user)
     @users[id] = user
+    @users_emails[user.email] = user
     user.id = @id
   end
 
   def get_quote(id)
-    @quotes[id]
+    @quotes.fetch(id) { :quote_does_not_exist }
   end
 
   def add_quote(quote)
