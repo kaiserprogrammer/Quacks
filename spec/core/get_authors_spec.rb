@@ -13,9 +13,16 @@ describe GetAuthors do
 
     t = AddAuthor.new("Bill", db)
     t.execute
+    author = db.get_author(t.author_id)
 
-    ga2 = GetAuthors.new(db)
-    ga2.execute
-    ga2.authors.length.must_equal 1
+    ga.execute
+    ga.authors.first.must_equal author
+    ga.authors.length.must_equal 1
+
+    t2 = AddAuthor.new("Bonny", db)
+    t2.execute
+
+    ga.execute
+    ga.authors.length.must_equal 2
   end
 end
