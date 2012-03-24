@@ -35,6 +35,6 @@ describe GetQuotes do
     gq = GetQuotes.new(author_id, @db)
     gq.execute
     gq.quotes.length.must_equal 1
-    gq.quotes.first.quote.must_equal text
+    gq.quotes.first.text.must_equal text
   end
 end

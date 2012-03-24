@@ -26,11 +26,11 @@ describe AddQuote do
     quote = db.get_quote(quote_id)
 
     author = db.get_author(author_id)
-    author.quotes.first.quote.must_equal text
+    author.quotes.first.text.must_equal text
     author.quotes.first.must_be_same_as quote
     user = db.get_user(user_id)
     author.quotes.first.must_be_same_as quote
-    user.quotes.first.quote.must_equal text
+    user.quotes.first.text.must_equal text
     author.quotes.first.must_be_same_as user.quotes.first
   end
 
@@ -58,8 +58,8 @@ describe AddQuote do
     author = db.get_author(author_id)
     author.quotes.length.must_equal 2
     user = db.get_user(user_id)
-    user.quotes.first.quote.must_equal text
+    user.quotes.first.text.must_equal text
     user2 = db.get_user(user2_id)
-    user2.quotes.first.quote.must_equal text + "1"
+    user2.quotes.first.text.must_equal text + "1"
   end
 end
