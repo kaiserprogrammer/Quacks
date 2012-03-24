@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require_relative "../add_author"
+require_relative "../../core/add_author"
 require_relative "memory_db"
 
 describe AddAuthor do

@@ -1,9 +1,9 @@
 require "minitest/autorun"
-require_relative "../user_dislikes_quote"
+require_relative "../../core/user_dislikes_quote"
 require_relative "memory_db"
-require_relative "../add_quote"
-require_relative "../add_user"
-require_relative "../add_author"
+require_relative "../../core/add_quote"
+require_relative "../../core/add_user"
+require_relative "../../core/add_author"
 
 describe UserDislikesQuote do
   it "should attribute a dislike to a user and a quote" do

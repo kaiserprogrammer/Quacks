@@ -1,7 +1,7 @@
 require "minitest/autorun"
-require_relative "../add_image"
+require_relative "../../core/add_image"
 require_relative "memory_db"
-require_relative "../add_author"
+require_relative "../../core/add_author"
 
 describe AddImage do
   it "should add an image for an author" do

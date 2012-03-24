@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require_relative "../add_user"
+require_relative "../../core/add_user"
 require_relative "memory_db"
 
 describe AddUser do

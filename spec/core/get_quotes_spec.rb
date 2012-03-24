@@ -1,8 +1,8 @@
 require "minitest/autorun"
-require_relative "../get_quotes"
-require_relative "../add_user"
-require_relative "../add_author"
-require_relative "../add_quote"
+require_relative "../../core/get_quotes"
+require_relative "../../core/add_user"
+require_relative "../../core/add_author"
+require_relative "../../core/add_quote"
 require_relative "memory_db"
 
 describe GetQuotes do

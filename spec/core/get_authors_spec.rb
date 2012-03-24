@@ -1,6 +1,6 @@
 require "minitest/autorun"
-require_relative "../get_authors"
-require_relative "../add_author"
+require_relative "../../core/get_authors"
+require_relative "../../core/add_author"
 require_relative "memory_db"
 
 describe GetAuthors do

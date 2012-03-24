@@ -1,7 +1,7 @@
 require "minitest/autorun"
-require_relative "../add_author"
-require_relative "../add_user"
-require_relative "../add_quote"
+require_relative "../../core/add_author"
+require_relative "../../core/add_user"
+require_relative "../../core/add_quote"
 require_relative "memory_db"
 
 describe AddQuote do
@@ -22,9 +22,14 @@ describe AddQuote do
   it "should add a quote for an author and attribute user" do
     aq = AddQuote.new(user_id, author_id, text, db)
     aq.execute
+    quote_id = aq.quote_id
+    quote = db.get_quote(quote_id)
+
     author = db.get_author(author_id)
     author.quotes.first.quote.must_equal text
+    author.quotes.first.must_be_same_as quote
     user = db.get_user(user_id)
+    author.quotes.first.must_be_same_as quote
     user.quotes.first.quote.must_equal text
     author.quotes.first.must_be_same_as user.quotes.first
   end
