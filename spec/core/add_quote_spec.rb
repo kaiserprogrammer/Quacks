@@ -62,4 +62,14 @@ describe AddQuote do
     user2 = db.get_user(user2_id)
     user2.quotes.first.text.must_equal text + "1"
   end
+
+  it "should add author and user to quote" do
+    aq = AddQuote.new(user_id, author_id, text, db)
+    aq.execute
+    quote_id = aq.quote_id
+    quote = db.get_quote(quote_id)
+
+    quote.user.must_be_same_as db.get_user(user_id)
+    quote.author.must_be_same_as db.get_author(author_id)
+  end
 end
