@@ -1,6 +1,6 @@
 require_relative "../core/get_authors"
 
-class GetAuthorsPresenter
+class AuthorsPresenter
   def initialize(view, db)
     @view = view
     @db = db

@@ -4,10 +4,10 @@ require_relative "../../core/add_quote"
 require_relative "../../core/add_user"
 require_relative "../../core/add_image"
 require_relative "../../core/user_likes_quote"
-require_relative "../../presenter/get_authors_presenter"
+require_relative "../../presenter/authors_presenter"
 require_relative "../core/memory_db"
 
-class MockGetAuthorsView
+class MockAuthorsView
   attr_accessor :authors
 
   def initialize
@@ -15,13 +15,13 @@ class MockGetAuthorsView
   end
 end
 
-describe GetAuthorsPresenter do
+describe AuthorsPresenter do
   attr_reader :db, :view, :presenter, :author, :user
 
   before(:each) do
-    @view = MockGetAuthorsView.new
+    @view = MockAuthorsView.new
     @db = InMemoryDB.new
-    @presenter = GetAuthorsPresenter.new(@view, @db)
+    @presenter = AuthorsPresenter.new(@view, @db)
 
     t = AddAuthor.new("Beck", db)
     t.execute
