@@ -1,6 +1,8 @@
 require_relative "quote"
 
 class AddQuote
+  attr_reader :quote_id
+
   def initialize(user_id, author_id, quote, db)
     @user_id = user_id
     @author_id = author_id
@@ -17,9 +19,5 @@ class AddQuote
     @quote_id = quote.id
     author.quotes << quote
     user.quotes << quote
-  end
-
-  def quote_id
-    @quote_id
   end
 end

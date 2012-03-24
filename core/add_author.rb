@@ -15,7 +15,6 @@ class AddAuthor
       author = Author.new(@name)
       @db.add_author(@name, author)
     end
-
     @author_id = author.id
   end
 end
