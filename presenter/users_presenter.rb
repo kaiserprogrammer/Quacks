@@ -19,10 +19,13 @@ class UsersPresenter
       user_model = {}
       user_model[:name] = user.name
       user_model[:id] = user.id
+      user_model[:score] = user.quotes.reduce(0) { |sum, quote| sum + quote.likes.length }
       user_quote = get_highest_quote(user.quotes)
       if user_quote
         user_model[:quote] = user_quote.text
         user_model[:quote_id] = user_quote.id
+        user_model[:likes] = user_quote.likes.length
+        user_model[:dislikes] = user_quote.dislikes.length
         user_model[:author] = user_quote.author.name
         user_model[:author_id] = user_quote.author.id
         user_model[:author_img_src] = user_quote.author.image.src if user_quote.author.image
