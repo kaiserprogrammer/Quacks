@@ -28,8 +28,8 @@ class InMemoryDB
     @authors_names.fetch(name) { :author_does_not_exist }
   end
 
-  def add_author(name, author)
-    @authors_names[name] = author
+  def add_author(author)
+    @authors_names[author.name] = author
     @authors[id] = author
     author.id = @id
   end

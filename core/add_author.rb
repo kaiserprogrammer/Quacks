@@ -12,7 +12,7 @@ class AddAuthor
     author = @db.get_author_by_name(@name)
     if author  == :author_does_not_exist
       author = Author.new(@name)
-      @db.add_author(@name, author)
+      @db.add_author(author)
     end
     @author_id = author.id
   end
