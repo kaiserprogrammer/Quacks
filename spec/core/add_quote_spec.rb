@@ -19,6 +19,13 @@ describe AddQuote do
     @text = "lorem ipsum"
   end
 
+  it "should not add a quote when there is no user or author" do
+    aq = AddQuote.new("unknown", author_id, text, db)
+    ->{ aq.execute }.must_raise RuntimeError
+    aq = AddQuote.new(user_id, "unknown", text, db)
+    ->{ aq.execute }.must_raise RuntimeError
+  end
+
   it "should add a quote for an author and attribute user" do
     aq = AddQuote.new(user_id, author_id, text, db)
     aq.execute
