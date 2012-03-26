@@ -7,7 +7,6 @@ class AddUser
     @name = name
     @email = email
     @db = db
-    db.transactions.info("#{self.class},;,#{name},;,#{email}")
   end
 
   def execute

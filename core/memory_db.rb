@@ -1,10 +1,4 @@
-require "log4r"
-
-include Log4r
-
 class InMemoryDB
-  attr_reader :transactions
-
   def initialize
     @authors_names = {}
     @authors = {}
@@ -12,8 +6,6 @@ class InMemoryDB
     @users_emails = {}
     @quotes = {}
     @id = 0
-    @transactions = Log4r::Logger.new("transaction_db")
-    @transactions.outputters = Log4r::Logger::FileOutputter.new("log_info", :filename => "transactions", :level => Log4r::Logger::INFO)
   end
 
   def id
