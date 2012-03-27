@@ -60,7 +60,7 @@ class Image
   include DataMapper::Resource
 
   property :id, Serial
-  property :src, String
+  property :src, String, :length => 255
 
   belongs_to :author
 end
