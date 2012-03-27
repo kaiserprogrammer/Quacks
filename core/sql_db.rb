@@ -1,6 +1,8 @@
 require "data_mapper"
+require_relative "user_methods"
 
 class User
+  include UserMethods
   include DataMapper::Resource
 
   property :id, Serial

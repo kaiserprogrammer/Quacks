@@ -19,8 +19,8 @@ class UsersPresenter
       user_model = {}
       user_model[:name] = user.name
       user_model[:id] = user.id
-      user_model[:score] = user.quotes.reduce(0) { |sum, quote| sum + quote.likes.length }
-      user_quote = get_highest_quote(user.quotes)
+      user_model[:score] = user.score
+      user_quote = user.best_quote
       if user_quote
         user_model[:quote] = user_quote.text
         user_model[:quote_id] = user_quote.id
@@ -35,15 +35,9 @@ class UsersPresenter
     users_model
   end
 
-  def get_highest_quote(quotes)
-    quotes.max_by { |quote| quote.likes.length }
-  end
-
   def order_desc(users)
     users.sort_by do |user|
-      user.quotes.inject(0) do |sum, quote|
-        sum += quote.likes.length
-      end
+      user.score
     end.reverse!
   end
 end

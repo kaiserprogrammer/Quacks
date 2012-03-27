@@ -1,4 +1,8 @@
+require_relative "user_methods"
+
 class User
+  include UserMethods
+
   attr_reader :name, :email
   attr_accessor :id, :quotes, :likes, :dislikes
 
