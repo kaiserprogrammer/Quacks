@@ -1,3 +1,4 @@
 source :rubygems
 
-gem "log4r"
+gem "data_mapper"
+gem "dm-sqlite-adapter"

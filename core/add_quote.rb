@@ -1,5 +1,3 @@
-require_relative "quote"
-
 class AddQuote
   attr_reader :quote_id
 
@@ -18,9 +16,7 @@ class AddQuote
     elsif author == :author_does_not_exist
       raise "Quacks#author_does_not_exist"
     else
-      quote = Quote.new(@quote)
-      quote.user = user
-      quote.author = author
+      quote = Quote.new(text: @quote, user: user, author: author)
       @db.add_quote(quote)
       @quote_id = quote.id
       author.quotes << quote

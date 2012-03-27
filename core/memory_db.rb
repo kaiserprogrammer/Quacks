@@ -1,3 +1,10 @@
+require_relative "user"
+require_relative "author"
+require_relative "quote"
+require_relative "image"
+require_relative "dislike"
+require_relative "like"
+
 class InMemoryDB
   def initialize
     @authors_names = {}
@@ -55,5 +62,14 @@ class InMemoryDB
   def add_quote(quote)
     @quotes[id] = quote
     quote.id = @id
+  end
+
+  def add_image(image)
+  end
+
+  def add_like(like)
+  end
+
+  def add_dislike(dislike)
   end
 end

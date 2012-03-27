@@ -1,5 +1,3 @@
-require_relative "image"
-
 class AddImage
   def initialize(author_id, image_path, db)
     @author_id = author_id
@@ -9,6 +7,8 @@ class AddImage
 
   def execute
     author = @db.get_author(@author_id)
-    author.image = Image.new(@image_path)
+    image = Image.new(src: @image_path)
+    author.image = image
+    @db.add_image(image)
   end
 end

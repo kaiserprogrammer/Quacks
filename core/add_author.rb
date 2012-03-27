@@ -1,4 +1,4 @@
-require_relative "author"
+#require_relative "author"
 
 class AddAuthor
   attr_reader :author_id
@@ -11,7 +11,7 @@ class AddAuthor
   def execute
     author = @db.get_author_by_name(@name)
     if author  == :author_does_not_exist
-      author = Author.new(@name)
+      author = Author.new(name: @name)
       @db.add_author(author)
     end
     @author_id = author.id
