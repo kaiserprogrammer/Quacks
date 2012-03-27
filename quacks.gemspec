@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
   s.authors = ["Jürgen Bickert"]
   s.email = "juergen.bickert@gmail.com"
   s.files = Dir.glob("{lib,core,presenter}/**/*.rb")
-  s.add_dependency "data_mapper"
+  s.add_dependency "data_mapper", "1.2.0"
 end

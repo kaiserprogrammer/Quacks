@@ -48,7 +48,7 @@ class Quote
   include DataMapper::Resource
 
   property :id, Serial
-  property :text, String
+  property :text, Text
 
   has n, :likes
   has n, :dislikes
