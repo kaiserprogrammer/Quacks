@@ -1,5 +1,3 @@
-require_relative "dislike"
-
 class UserDislikesQuote
   def initialize(user_id, quote_id, db)
     @user_id = user_id
@@ -14,9 +12,10 @@ class UserDislikesQuote
     end
     unless disliked_already
       quote = @db.get_quote(@quote_id)
-      dislike = Dislike.new(user, quote)
+      dislike = Dislike.new(user: user, quote: quote)
       user.dislikes << dislike
       quote.dislikes << dislike
+      @db.add_dislike(dislike)
     end
   end
 end

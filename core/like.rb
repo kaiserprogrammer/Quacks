@@ -1,8 +1,8 @@
 class Like
   attr_reader :user, :quote
 
-  def initialize(user, quote)
-    @user = user
-    @quote = quote
+  def initialize(fields={})
+    @user = fields[:user]
+    @quote = fields[:quote]
   end
 end

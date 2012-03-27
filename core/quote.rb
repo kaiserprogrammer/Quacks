@@ -1,9 +1,11 @@
 class Quote
-  attr_reader :text
-  attr_accessor :id, :likes, :dislikes, :user, :author
+  attr_reader :text, :user, :author
+  attr_accessor :id, :likes, :dislikes
 
-  def initialize(text)
-    @text = text
+  def initialize(fields={})
+    @text = fields[:text]
+    @author = fields[:author]
+    @user = fields[:user]
     @likes = []
     @dislikes = []
   end
