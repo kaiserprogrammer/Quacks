@@ -132,5 +132,6 @@ class DB
   end
 end
 
+DataMapper::Property::String.length(255)
 DataMapper.finalize
 DB.setup(:default, "sqlite::memory:")
