@@ -1,11 +1,15 @@
 require "minitest/autorun"
 require_relative "../../core/add_author"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 
 describe AddAuthor do
+  before(:each) do
+    DB.auto_migrate!
+  end
+
   it "should create an author" do
     name = "John"
-    db = InMemoryDB.new
+    db = DB.new
     t = AddAuthor.new(name, db)
     t.execute
     id = t.author_id
@@ -16,7 +20,7 @@ describe AddAuthor do
 
   it "should deliver an existing author" do
     name = "John"
-    db = InMemoryDB.new
+    db = DB.new
     t = AddAuthor.new(name, db)
     t.execute
     id = t.author_id
@@ -30,6 +34,6 @@ describe AddAuthor do
 
     author2 = db.get_author(id2)
     author2.name.must_equal name
-    author2.must_be_same_as author
+    author2.must_equal author
   end
 end

@@ -1,10 +1,14 @@
 require "minitest/autorun"
 require_relative "../../core/add_user"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 
 describe AddUser do
+  before(:each) do
+    DB.auto_migrate!
+  end
+
   it "should add a user" do
-    db = InMemoryDB.new
+    db = DB.new
     name = "Josh"
     email = "johny@example.com"
     t = AddUser.new(name, email, db)
@@ -17,7 +21,7 @@ describe AddUser do
   end
 
   it "should not overwrite an existing user" do
-    db = InMemoryDB.new
+    db = DB.new
     name = "Bill"
     email = "billy@example.com"
     t = AddUser.new(name, email, db)
@@ -33,11 +37,11 @@ describe AddUser do
 
     id2 = t2.user_id
     user2 = db.get_user(id2)
-    user2.must_be_same_as user
+    user2.must_equal user
   end
 
   it "should not update user id" do
-    db = InMemoryDB.new
+    db = DB.new
     name = "bill"
     email = "bill@example.com"
     t = AddUser.new(name, email, db)

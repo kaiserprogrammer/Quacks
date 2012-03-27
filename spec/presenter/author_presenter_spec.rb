@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require_relative "../../presenter/author_presenter"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 require_relative "../../core/add_author"
 require_relative "../../core/add_user"
 require_relative "../../core/add_image"
@@ -19,7 +19,8 @@ describe AuthorPresenter do
   attr_reader :author_id, :user_id, :db, :view, :presenter
 
   before(:each) do
-    @db = InMemoryDB.new
+    DB.auto_migrate!
+    @db = DB.new
     t = AddAuthor.new("Uncle Bob", db)
     t.execute
     @author_id = t.author_id

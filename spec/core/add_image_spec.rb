@@ -1,11 +1,15 @@
 require "minitest/autorun"
 require_relative "../../core/add_image"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 require_relative "../../core/add_author"
 
 describe AddImage do
+  before(:each) do
+    DB.auto_migrate!
+  end
+
   it "should add an image for an author" do
-    db = InMemoryDB.new
+    db = DB.new
     t = AddAuthor.new("Billy", db)
     t.execute
     author_id = t.author_id
@@ -19,7 +23,7 @@ describe AddImage do
   end
 
   it "should change an existing image for an author" do
-    db = InMemoryDB.new
+    db = DB.new
     t = AddAuthor.new("Billy", db)
     t.execute
     author_id = t.author_id

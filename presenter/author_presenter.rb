@@ -1,5 +1,3 @@
-require_relative "../core/get_quotes"
-
 class AuthorPresenter
   def initialize(author_id, view, db)
     @author_id = author_id

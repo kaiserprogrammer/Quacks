@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require_relative "../../presenter/users_presenter"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 require_relative "../../core/add_author"
 require_relative "../../core/add_user"
 require_relative "../../core/add_quote"
@@ -14,7 +14,8 @@ end
 describe UsersPresenter do
   attr_reader :db, :view, :presenter, :author, :author2, :user, :text
   before(:each) do
-    @db = InMemoryDB.new
+    DB.auto_migrate!
+    @db = DB.new
     @view = MockUsersView.new
     @presenter = UsersPresenter.new(view, db)
 

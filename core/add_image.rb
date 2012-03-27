@@ -7,8 +7,12 @@ class AddImage
 
   def execute
     author = @db.get_author(@author_id)
-    image = Image.new(src: @image_path)
-    author.image = image
-    @db.add_image(image)
+    if author.image
+      author.image.update(src: @image_path)
+    else
+      image = Image.new(src: @image_path)
+      author.image = image
+      @db.add_image(image)
+    end
   end
 end

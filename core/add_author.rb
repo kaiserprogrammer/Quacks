@@ -1,5 +1,3 @@
-#require_relative "author"
-
 class AddAuthor
   attr_reader :author_id
 

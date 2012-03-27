@@ -5,7 +5,7 @@ require_relative "image"
 require_relative "dislike"
 require_relative "like"
 
-class InMemoryDB
+class DB
   def initialize
     @authors_names = {}
     @authors = {}
@@ -13,6 +13,22 @@ class InMemoryDB
     @users_emails = {}
     @quotes = {}
     @id = 0
+  end
+
+  def self.reset
+    @authors_names = {}
+    @authors = {}
+    @users = {}
+    @users_emails = {}
+    @quotes = {}
+    @id = 0
+  end
+
+  def self.auto_migrate!
+    self.reset
+  end
+
+  def self.setup(*)
   end
 
   def id
@@ -71,5 +87,9 @@ class InMemoryDB
   end
 
   def add_dislike(dislike)
+  end
+
+  def self.persistent?
+    false
   end
 end

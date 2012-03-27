@@ -2,13 +2,14 @@ require "minitest/autorun"
 require_relative "../../core/add_author"
 require_relative "../../core/add_user"
 require_relative "../../core/add_quote"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 
 describe AddQuote do
   attr_reader :author_id, :db, :text, :user_id
 
   before(:each) do
-    @db = InMemoryDB.new
+    DB.auto_migrate!
+    @db = DB.new
     t = AddAuthor.new("John", @db)
     t.execute
     @author_id = t.author_id
@@ -34,11 +35,11 @@ describe AddQuote do
 
     author = db.get_author(author_id)
     author.quotes.first.text.must_equal text
-    author.quotes.first.must_be_same_as quote
+    author.quotes.first.must_equal quote
     user = db.get_user(user_id)
-    author.quotes.first.must_be_same_as quote
+    author.quotes.first.must_equal quote
     user.quotes.first.text.must_equal text
-    author.quotes.first.must_be_same_as user.quotes.first
+    author.quotes.first.must_equal user.quotes.first
   end
 
   it "should add more quotes for an author" do
@@ -76,7 +77,7 @@ describe AddQuote do
     quote_id = aq.quote_id
     quote = db.get_quote(quote_id)
 
-    quote.user.must_be_same_as db.get_user(user_id)
-    quote.author.must_be_same_as db.get_author(author_id)
+    quote.user.must_equal db.get_user(user_id)
+    quote.author.must_equal db.get_author(author_id)
   end
 end

@@ -1,5 +1,3 @@
-#require_relative "user"
-
 class AddUser
   attr_reader :user_id
 

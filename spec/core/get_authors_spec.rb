@@ -1,11 +1,12 @@
 require "minitest/autorun"
 require_relative "../../core/get_authors"
 require_relative "../../core/add_author"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 
 describe GetAuthors do
   it "should retrieve all authors" do
-    db = InMemoryDB.new
+    DB.auto_migrate!
+    db = DB.new
 
     ga = GetAuthors.new(db)
     ga.execute

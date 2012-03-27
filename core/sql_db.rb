@@ -1,9 +1,11 @@
+require "data_mapper"
+
 class User
   include DataMapper::Resource
 
   property :id, Serial
   property :name, String
-  property :email, String
+  property :email, String, :unique_index => true
 
   has n, :likes
   has n, :dislikes
@@ -14,7 +16,7 @@ class Author
   include DataMapper::Resource
 
   property :id, Serial
-  property :name, String
+  property :name, String, :unique_index => true
 
   has n, :quotes
   has 1, :image
@@ -59,7 +61,7 @@ class Image
   belongs_to :author
 end
 
-class SQLDB
+class DB
 
   def add_user(user)
     user.save
@@ -86,7 +88,7 @@ class SQLDB
   end
 
   def get_author_by_name(name)
-    :author_does_not_exist
+    Author.first(name: name) || :author_does_not_exist
   end
 
   def get_quote(id)
@@ -94,7 +96,7 @@ class SQLDB
   end
 
   def get_user_by_email(email)
-    :user_does_not_exist
+    User.first(email: email) || :user_does_not_exist
   end
 
   def add_quote(quote)
@@ -112,6 +114,19 @@ class SQLDB
   def add_dislike(dislike)
     dislike.save
   end
+
+  def self.persistent?
+    true
+  end
+
+  def self.setup(*args)
+    DataMapper.setup(*args)
+  end
+
+  def self.auto_migrate!
+    DataMapper.auto_migrate!
+  end
 end
 
 DataMapper.finalize
+DB.setup(:default, "sqlite::memory:")

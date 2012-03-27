@@ -3,13 +3,14 @@ require_relative "../../core/get_quotes"
 require_relative "../../core/add_user"
 require_relative "../../core/add_author"
 require_relative "../../core/add_quote"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 
 describe GetQuotes do
   attr_reader :db
 
   before(:each) do
-    @db = InMemoryDB.new
+    DB.auto_migrate!
+    @db = DB.new
   end
 
   it "should get no quotes for an unknown author" do

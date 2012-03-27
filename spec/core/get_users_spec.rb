@@ -1,11 +1,12 @@
 require "minitest/autorun"
 require_relative "../../core/get_users"
-require_relative "../../core/memory_db"
+require_relative "../../core/current_db"
 require_relative "../../core/add_user"
 
 describe GetUsers do
   it "should get all users" do
-    db = InMemoryDB.new
+    DB.auto_migrate!
+    db = DB.new
 
     gu = GetUsers.new(db)
     gu.execute
